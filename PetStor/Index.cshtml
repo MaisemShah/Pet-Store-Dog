@@ -1,0 +1,42 @@
+﻿@page
+@model Dog_Pet.Pages.PetStor.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PetStores[0].PSN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetStores[0].PSF)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.PetStores) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PSN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PSF)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PSID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PSID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PSID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
